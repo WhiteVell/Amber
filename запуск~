@@ -1,0 +1,8 @@
+терминал
+vladimir@MacInToshiba:~$ cd ~/amber
+vladimir@MacInToshiba:~/amber$ node ./server/server.js
+Starting file server on port 4000
+
+браузер
+http://localhost:4000/
+

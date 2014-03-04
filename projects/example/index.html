@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+    <title>PMiK 2013</title>
+    <script src="../../js/amber.js" type="text/javascript"></script>
+    <script src="js/modernizr.custom.71730.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript">
+      loadAmber({ //Загрузка Амбера
+        files: ['Examples.js'], //Перечисление файлов JS для загрузки (название категории)
+        prefix: 'projects/example/js', //Префикс пути к файлу относительно корня amber
+        ready: function() { //Вызывается, когда амбер загрузится
+		$(function() {
+        		smalltalk.Hello._new()._startApp(); //Обращение к методу из класса Hello. ( Hello new startApp )
+      });
+        }});
+
+    </script>
+  </head>
+  <body>
+<!--
+        <div class="container">
+        <div class="navbar navbar-static-top">
+          <nav class="navbar-inner">
+            <a class="brand">Socialgraphapp</a>
+            <ul class="nav">
+              <li><a class="divider"></a></li>
+              <li><a href="#"><i class="icon-home"></i> Домой </a> </li>
+              <li><a href="#"><i class="icon-comment"></i> Новый пост!</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Информация <b class="caret"> </b></a> 
+                <ul class="dropdown-menu">
+                  <li><a href="#">о проекте</a></li>
+                  <li><a href="#">о нас</a></li>
+                  <li><a href="#">справка</a></li>
+                </ul>
+              </li>
+              <li>{{> user_info}}</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+-->
+    <article>
+      <div align="center"><h1>Список Задач</h1></div>
+      <hr>
+      <div align = "center"><output id = "output_task"></output></div>
+      <hr>
+      <button onclick="smalltalk.Browser._open()">Открыть Браузер Amber</button>
+      <br>
+      <input type="button" id="addFormBtn" value='Добавить'/>
+      
+      <div id="addForm" style="display: none">
+		  <div align="center"><h2> Добавление новой задачи. </h2></div>
+		  <div align="center">Новая задача:</div>
+		  <br>
+		  <div align="center"><input id= "input_new_task" type="text"/></div>
+		  <br>
+		  <div align="center">Время:</div>
+		  <br>
+		  <div align="center">
+			  <input id="jquiDate" type="text" />
+			  <input id= "input_new_date" type="date"/>
+			  <input id= "input_new_time" type="time"/>
+		  </div>
+      <div> 
+        <input id= "later" type="button" value='Later'/> 
+      </div>
+		  <br>
+		  <div align="center"><input id = "print_new_task" type="button" value="Новая задача"/> </div>
+      </div>
+
+    </article>
+    <script>
+		$(function(){
+			console.log('im ready!')
+			$('#addFormBtn').click(function(){
+				$('#addForm').fadeIn();
+			});
+			$('#print_new_task').click(function(){
+				$('#addForm').fadeOut();
+			});
+			$("#jquiDate").datepicker();
+		}); 
+    </script>
+  </body>
+</html>
+

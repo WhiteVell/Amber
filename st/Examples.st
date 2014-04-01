@@ -124,7 +124,10 @@ addNewProject
                                                                         (document getElementById: 'input_new_time') value).
     delay := ( taskDate - Date now ).
     (Date new milliseconds: delay).
-    [window alert: self printMessage ] valueWithTimeout: delay.
+    "[window alert: self printMessage ] valueWithTimeout: delay."
+    
+     [self notification] valueWithTimeout: delay.
+     
    	"'#print_new_task' asJQuery after: '<p>', taskDate, ': waiting - ' , delay , '</p>'."
 !
 
@@ -133,9 +136,18 @@ collection
     ^collection
 !
 
+notification
+   | dtTask |
+   dtTask := Data now.
+  	(window confirm: self printMessage ) ifTrue: [
+		window alert: dtTask]
+  	 	ifFalse: [ window alert: 'taskData'].
+!
+
 printMessage
-| msg |
-    msg := ( document getElementById: 'input_new_task' ) value.
+| msg noteTask |
+    msg := ( document getElementById: 'input_new_task', '\n', 'NoteTask' ) value.
+    "noteTask := ( document getElementById: 'NoteTask' ) value." 
 	^msg
 !
 

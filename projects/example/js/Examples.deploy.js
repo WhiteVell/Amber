@@ -228,10 +228,10 @@ return smalltalk.withContext(function($ctx1) { taskDate=_st((smalltalk.DateStri
 delay=_st(taskDate).__minus(_st((smalltalk.Date || Date))._now());
 _st(_st((smalltalk.Date || Date))._new())._milliseconds_(delay);
 _st((function(){
-return smalltalk.withContext(function($ctx2) {return _st(window)._alert_(_st(self)._printMessage());
+return smalltalk.withContext(function($ctx2) {return _st(self)._notification();
 }, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}))._valueWithTimeout_(delay);
 return self}, function($ctx1) {$ctx1.fill(self,"addNewProject",{taskDate:taskDate,delay:delay}, smalltalk.Hello)})},
-messageSends: ["dateFromString:", ",", "value", "getElementById:", "-", "now", "milliseconds:", "new", "valueWithTimeout:", "alert:", "printMessage"]}),
+messageSends: ["dateFromString:", ",", "value", "getElementById:", "-", "now", "milliseconds:", "new", "valueWithTimeout:", "notification"]}),
 smalltalk.Hello);
 
 smalltalk.addMethod(
@@ -255,18 +255,37 @@ messageSends: ["ifNil:", "new"]}),
 smalltalk.Hello);
 
 smalltalk.addMethod(
+"_notification",
+smalltalk.method({
+selector: "notification",
+fn: function (){
+var self=this;
+var dtTask;
+return smalltalk.withContext(function($ctx1) { var $1;
+dtTask=_st((smalltalk.Data || Data))._now();
+$1=_st(window)._confirm_(_st(self)._printMessage());
+if(smalltalk.assert($1)){
+_st(window)._alert_(dtTask);
+} else {
+_st(window)._alert_("taskData");
+};
+return self}, function($ctx1) {$ctx1.fill(self,"notification",{dtTask:dtTask}, smalltalk.Hello)})},
+messageSends: ["now", "ifTrue:ifFalse:", "alert:", "confirm:", "printMessage"]}),
+smalltalk.Hello);
+
+smalltalk.addMethod(
 "_printMessage",
 smalltalk.method({
 selector: "printMessage",
 fn: function (){
 var self=this;
-var msg;
+var msg,noteTask;
 return smalltalk.withContext(function($ctx1) { var $1;
-msg=_st(_st(document)._getElementById_("input_new_task"))._value();
+msg=_st(_st(document)._getElementById_(_st(_st("input_new_task").__comma("\x5cn")).__comma("NoteTask")))._value();
 $1=msg;
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"printMessage",{msg:msg}, smalltalk.Hello)})},
-messageSends: ["value", "getElementById:"]}),
+}, function($ctx1) {$ctx1.fill(self,"printMessage",{msg:msg,noteTask:noteTask}, smalltalk.Hello)})},
+messageSends: ["value", "getElementById:", ","]}),
 smalltalk.Hello);
 
 smalltalk.addMethod(

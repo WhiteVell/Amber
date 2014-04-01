@@ -305,12 +305,12 @@ return smalltalk.withContext(function($ctx1) { taskDate=_st((smalltalk.DateStri
 delay=_st(taskDate).__minus(_st((smalltalk.Date || Date))._now());
 _st(_st((smalltalk.Date || Date))._new())._milliseconds_(delay);
 _st((function(){
-return smalltalk.withContext(function($ctx2) {return _st(window)._alert_(_st(self)._printMessage());
+return smalltalk.withContext(function($ctx2) {return _st(self)._notification();
 }, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}))._valueWithTimeout_(delay);
 return self}, function($ctx1) {$ctx1.fill(self,"addNewProject",{taskDate:taskDate,delay:delay}, smalltalk.Hello)})},
 args: [],
-source: "addNewProject\x0a|  taskDate delay|\x0a    taskDate := DateStringParser dateFromString: (( document getElementById: 'input_new_date' ) value, \x0a    \x09\x09\x09\x09\x09\x09\x09\x09\x09\x09\x09\x09\x09\x09\x09\x09\x09' ', \x0a                                                                        (document getElementById: 'input_new_time') value).\x0a    delay := ( taskDate - Date now ).\x0a    (Date new milliseconds: delay).\x0a    [window alert: self printMessage ] valueWithTimeout: delay.\x0a   \x09\x22'#print_new_task' asJQuery after: '<p>', taskDate, ': waiting - ' , delay , '</p>'.\x22",
-messageSends: ["dateFromString:", ",", "value", "getElementById:", "-", "now", "milliseconds:", "new", "valueWithTimeout:", "alert:", "printMessage"],
+source: "addNewProject\x0a|  taskDate delay|\x0a    taskDate := DateStringParser dateFromString: (( document getElementById: 'input_new_date' ) value, \x0a    \x09\x09\x09\x09\x09\x09\x09\x09\x09\x09\x09\x09\x09\x09\x09\x09\x09' ', \x0a                                                                        (document getElementById: 'input_new_time') value).\x0a    delay := ( taskDate - Date now ).\x0a    (Date new milliseconds: delay).\x0a    \x22[window alert: self printMessage ] valueWithTimeout: delay.\x22\x0a    \x0a     [self notification] valueWithTimeout: delay.\x0a     \x0a   \x09\x22'#print_new_task' asJQuery after: '<p>', taskDate, ': waiting - ' , delay , '</p>'.\x22",
+messageSends: ["dateFromString:", ",", "value", "getElementById:", "-", "now", "milliseconds:", "new", "valueWithTimeout:", "notification"],
 referencedClasses: ["DateStringParser", "Date"]
 }),
 smalltalk.Hello);
@@ -341,21 +341,45 @@ referencedClasses: ["Array"]
 smalltalk.Hello);
 
 smalltalk.addMethod(
+"_notification",
+smalltalk.method({
+selector: "notification",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+var dtTask;
+return smalltalk.withContext(function($ctx1) { var $1;
+dtTask=_st((smalltalk.Data || Data))._now();
+$1=_st(window)._confirm_(_st(self)._printMessage());
+if(smalltalk.assert($1)){
+_st(window)._alert_(dtTask);
+} else {
+_st(window)._alert_("taskData");
+};
+return self}, function($ctx1) {$ctx1.fill(self,"notification",{dtTask:dtTask}, smalltalk.Hello)})},
+args: [],
+source: " notification\x0a   | dtTask |\x0a   dtTask := Data now.\x0a  \x09(window confirm: self printMessage ) ifTrue: [\x0a\x09\x09window alert: dtTask]\x0a  \x09 \x09ifFalse: [ window alert: 'taskData'].",
+messageSends: ["now", "ifTrue:ifFalse:", "alert:", "confirm:", "printMessage"],
+referencedClasses: ["Data"]
+}),
+smalltalk.Hello);
+
+smalltalk.addMethod(
 "_printMessage",
 smalltalk.method({
 selector: "printMessage",
 category: 'not yet classified',
 fn: function (){
 var self=this;
-var msg;
+var msg,noteTask;
 return smalltalk.withContext(function($ctx1) { var $1;
-msg=_st(_st(document)._getElementById_("input_new_task"))._value();
+msg=_st(_st(document)._getElementById_(_st(_st("input_new_task").__comma("\x5cn")).__comma("NoteTask")))._value();
 $1=msg;
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"printMessage",{msg:msg}, smalltalk.Hello)})},
+}, function($ctx1) {$ctx1.fill(self,"printMessage",{msg:msg,noteTask:noteTask}, smalltalk.Hello)})},
 args: [],
-source: "printMessage\x0a| msg |\x0a    msg := ( document getElementById: 'input_new_task' ) value.\x0a\x09^msg",
-messageSends: ["value", "getElementById:"],
+source: "printMessage\x0a| msg noteTask |\x0a    msg := ( document getElementById: 'input_new_task', '\x5cn', 'NoteTask' ) value.\x0a    \x22noteTask := ( document getElementById: 'NoteTask' ) value.\x22 \x0a\x09^msg",
+messageSends: ["value", "getElementById:", ","],
 referencedClasses: []
 }),
 smalltalk.Hello);

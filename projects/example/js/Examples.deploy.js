@@ -262,7 +262,7 @@ fn: function (){
 var self=this;
 var dtTask;
 return smalltalk.withContext(function($ctx1) { var $1;
-dtTask=_st((smalltalk.Data || Data))._now();
+dtTask=_st((smalltalk.Date || Date))._now();
 $1=_st(window)._confirm_(_st(self)._printMessage());
 if(smalltalk.assert($1)){
 _st(window)._alert_(dtTask);

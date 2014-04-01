@@ -138,7 +138,7 @@ collection
 
 notification
    | dtTask |
-   dtTask := Data now.
+   dtTask := Date now.
   	(window confirm: self printMessage ) ifTrue: [
 		window alert: dtTask]
   	 	ifFalse: [ window alert: 'taskData'].

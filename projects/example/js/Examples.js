@@ -349,7 +349,7 @@ fn: function (){
 var self=this;
 var dtTask;
 return smalltalk.withContext(function($ctx1) { var $1;
-dtTask=_st((smalltalk.Data || Data))._now();
+dtTask=_st((smalltalk.Date || Date))._now();
 $1=_st(window)._confirm_(_st(self)._printMessage());
 if(smalltalk.assert($1)){
 _st(window)._alert_(dtTask);
@@ -358,9 +358,9 @@ _st(window)._alert_("taskData");
 };
 return self}, function($ctx1) {$ctx1.fill(self,"notification",{dtTask:dtTask}, smalltalk.Hello)})},
 args: [],
-source: " notification\x0a   | dtTask |\x0a   dtTask := Data now.\x0a  \x09(window confirm: self printMessage ) ifTrue: [\x0a\x09\x09window alert: dtTask]\x0a  \x09 \x09ifFalse: [ window alert: 'taskData'].",
+source: " notification\x0a   | dtTask |\x0a   dtTask := Date now.\x0a  \x09(window confirm: self printMessage ) ifTrue: [\x0a\x09\x09window alert: dtTask]\x0a  \x09 \x09ifFalse: [ window alert: 'taskData'].",
 messageSends: ["now", "ifTrue:ifFalse:", "alert:", "confirm:", "printMessage"],
-referencedClasses: ["Data"]
+referencedClasses: ["Date"]
 }),
 smalltalk.Hello);
 
